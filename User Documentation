@@ -1,0 +1,133 @@
+Here is an expanded documentation for the NEURA AI API.
+
+## Authentication and Authorization
+
+All requests to the NEURA AI API must be authenticated using a Bearer token in the `Authorization` header. Your API key, which you can obtain from the NEURA platform, should be prepended with "Bearer " followed by your key.
+
+```json
+Authorization: Bearer YOUR__NEURA_API_KEY
+```
+
+Failure to provide a valid API key will result in a `401 Unauthorized` response.
+
+-----
+
+## Available Endpoints
+
+### 1\. Chat Completion
+
+`POST /api/chat`
+
+This endpoint facilitates real-time chat interactions. It leverages an advanced, proprietary NEURA language model to generate responses.
+
+#### Request Body
+
+The request body should be a JSON object with the following properties:
+
+  - `message` (string, required): The user's input message for the chat.
+  - `model` (string, optional): Specifies the language model to use. Defaults to `neura-chat-1.0`.
+  - `history` (array of objects, optional): An array of previous message objects to provide context for the current conversation. Each object should have `role` (e.g., 'user', 'assistant') and `content` (string).
+  - `temperature` (number, optional): Controls the randomness of the output. Values range from 0.0 (more deterministic) to 1.0 (more creative). Defaults to `0.7`.
+  - `max_tokens` (number, optional): The maximum number of tokens to generate in the response.
+
+#### Example Request
+
+```json
+POST /api/chat
+{
+  "message": "What is the capital of France?",
+  "history": [
+    {
+      "role": "user",
+      "content": "Hello, who are you?"
+    },
+    {
+      "role": "assistant",
+      "content": "I am a helpful AI assistant."
+    }
+  ],
+  "temperature": 0.5
+}
+```
+
+#### Example Response
+
+```json
+{
+  "response": "The capital of France is Paris.",
+  "tokens_used": 15
+}
+```
+
+-----
+
+### 2\. Bot Status
+
+`GET /api/bot/status`
+
+This simple endpoint checks the operational status of the NEURA bot and the API itself. It is useful for health checks and monitoring.
+
+#### Example Request
+
+```json
+GET /api/bot/status
+```
+
+#### Example Response (Active)
+
+```json
+{
+  "status": "active",
+  "message": "NEURA bot is running smoothly."
+}
+```
+
+#### Example Response (Inactive)
+
+```json
+{
+  "status": "inactive",
+  "message": "NEURA bot is currently unavailable. Please try again later."
+}
+```
+
+-----
+
+### 3\. Gemini Integration
+
+`POST /api/gemini`
+
+This endpoint provides a direct pass-through for integrating with the Gemini API, powered by a key you provide from Google AI Studio. This allows you to leverage Google's models directly through the NEURA platform.
+
+#### Request Body
+
+The request body is a JSON object that mirrors the standard Gemini API request structure.
+
+  - `message` (string, required): The user's prompt for the Gemini model.
+  - `model` (string, optional): The specific Gemini model to use, e.g., `gemini-2.5-pro`. Defaults to `gemini-1.5-flash`.
+  - `temperature` (number, optional): Controls the creativity of the Gemini model's response.
+  - `candidate_count` (number, optional): The number of possible responses to generate.
+
+#### Gemini API Key Configuration
+
+To use this endpoint, you must obtain a Gemini API key from Google AI Studio.  Follow the instructions on the Google AI for Developers site to get your key. Once you have the key, you will need to configure it within your NEURA account settings, which will then be used by the `/api/gemini` endpoint.
+
+#### Example Request
+
+```json
+POST /api/gemini
+{
+  "message": "Describe the process of photosynthesis.",
+  "model": "gemini-1.5-flash",
+  "temperature": 0.8
+}
+```
+
+#### Example Response
+
+```json
+{
+  "response": "Photosynthesis is the process used by plants, algae and certain bacteria to turn light energy into chemical energy...",
+  "model_used": "gemini-1.5-flash"
+}
+```
