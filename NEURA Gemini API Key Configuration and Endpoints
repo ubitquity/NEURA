@@ -1,0 +1,22 @@
+NEURA Gemini API Key Configuration
+Get your free Gemini API key from Google AI Studio to power your NEURA assistant: https://ai.google.dev/gemini-api/docs/api-key
+
+Available Endpoints
+POST
+Chat Completion
+
+/api/chat
+
+active
+GET
+Bot Status
+
+/api/bot/status
+
+active
+POST
+Gemini Integration
+
+/api/gemini
+
+active
