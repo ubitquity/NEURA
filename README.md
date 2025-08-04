@@ -40,6 +40,3 @@ UBITQUITY, INC. is a leading blockchain-secured platform for real estate and tit
   * **Email (Press):** [info@ubitquity.io](mailto:info@ubitquity.io)
   * **Technical/Billing Support:** [https://support.ubitquityx.com](https://support.ubitquityx.com)
   * **Phone:** +1 (724) BITCØIN [248–2046]
-
-© 2015-2025 UBITQUITY, INC. All Rights Reserved.
-[Privacy Policy](https://www.google.com/search?q=https://ubitquity.io/privacy-policy) | [Terms of Use](https://ubitquity.io/terms-of-use)
