@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "message": "Gemini API integration is working correctly",
+  "timestamp": "2025-08-04T22:06:32.101Z",
+  "data": {
+    "model": "gemini-2.5-pro",
+    "response_time": "180ms",
+    "tokens_used": 45
+  }
+}
